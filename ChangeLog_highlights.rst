@@ -3,6 +3,13 @@
 Recent Changes
 ==============
 
+Version 2.1.5 - 2019-11-27 (pymssql-linux)
+=================================================
+
+- Add Python 3.8 support.
+
+- Drop support for Python <= 3.6
+
 Version 3.0.3 - 2019-11-15
 ==================================
 
