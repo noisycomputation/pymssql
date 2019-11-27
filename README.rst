@@ -23,4 +23,20 @@ There is a Google Group for discussion at:
 
 https://groups.google.com/forum/?fromgroups#!forum/pymssql
 
+Building
+========
 
+To build manylinux Python wheels, ensure you have docker and docker-compose
+installed, and run the following in the project root directory:
+
+.. code::
+    docker-compose up -d
+    docker exec pymssql-linux_x86_x64_1 ./io/dev/build_manylinux_wheels.sh
+    docker exec pymssql-linux_i686_1 ./io/dev/build_manylinux_wheels.sh
+    docker-compose down
+
+To run unit tests, run the following before bringing the containers down:
+
+.. code::
+    docker exec pymssql-linux_x86_x64_1 ./io/dev/test_manylinux_wheels.sh
+    docker exec pymssql-linux_i686_1 ./io/dev/test_manylinux_wheels.sh
