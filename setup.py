@@ -54,7 +54,7 @@ try:
 except ImportError:
     pass
 else:
-    Extension.__init__ = setuptools.dist._get_unpatched(setuptools.extension.Extension).__init__
+    Extension.__init__ = setuptools.monkey.get_unpatched(setuptools.extension.Extension).__init__
 
 from setuptools.command.test import test as TestCommand
 
@@ -157,7 +157,7 @@ SYSTEM = platform.system()
 print("setup.py: platform.system() => %r" % SYSTEM)
 print("setup.py: platform.architecture() => %r" % (platform.architecture(),))
 if SYSTEM == 'Linux':
-    print("setup.py: platform.linux_distribution() => %r" % (platform.linux_distribution(),))
+    print("setup.py: platform.platform() => %r" % (platform.platform(),))
 if SYSTEM != 'Windows':
     print("setup.py: platform.libc_ver() => %r" % (platform.libc_ver(),))
 
@@ -439,18 +439,17 @@ class PyTest(TestCommand):
 
 
 setup(
-    name  = 'pymssql',
+    name  = 'pymssql-linux',
     version = extract_version(),
     description = 'DB-API interface to Microsoft SQL Server for Python. (new Cython-based version)',
     long_description = open('README.rst').read() +"\n\n" + open('ChangeLog_highlights.rst').read(),
     author = 'Damien Churchill',
     author_email = 'damoxc@gmail.com',
-    maintainer = 'pymssql development team',
-    maintainer_email = 'pymssql@googlegroups.com',
+    maintainer = 'Noisy Computation',
+    maintainer_email = 'noisycomputation@gmail.com',
     license = 'LGPL',
-    platforms = 'any',
     keywords = ['mssql', 'SQL Server', 'database', 'DB-API'],
-    url = 'http://pymssql.org',
+    url = 'https://github.com/noisycomputation/pymssql-linux',
     cmdclass = {
         'build_ext': build_ext,
         'clean': clean,
@@ -462,12 +461,9 @@ setup(
       "Intended Audience :: Developers",
       "License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)",
       "Programming Language :: Python",
-      "Programming Language :: Python :: 2.7",
       "Programming Language :: Python :: 3",
-      "Programming Language :: Python :: 3.4",
-      "Programming Language :: Python :: 3.5",
-      "Programming Language :: Python :: 3.6",
       "Programming Language :: Python :: 3.7",
+      "Programming Language :: Python :: 3.8",
       "Programming Language :: Python :: Implementation :: CPython",
       "Topic :: Database",
       "Topic :: Database :: Database Engines/Servers",
