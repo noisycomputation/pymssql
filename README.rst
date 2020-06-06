@@ -8,7 +8,7 @@ The Original Pymssql Project Has Been Discontinued
 
 This repository has been forked from upstream pymssql
 and modified to work with both Python 3.7 and 3.8,
-whilst continuing to (at least) build successfully for
+whilst continuing to build successfully for
 2.7 for a short while, for sentimental but quite
 fundamental reasons.
 
@@ -69,7 +69,7 @@ the only set of build instructions that are guaranteed
 to be valid will be contained in the config file(s) for
 the current CI system being used. For the branch to which
 this README document pertains, the CI system is circleci
-and *the build instructions are at* **.circleci/config.yml**
+and the build instructions are at **.circleci/config.yml**
 
 Though referencing a CI configuration file is not as
 user-friendly as writing a soliloquy, it has the benefit
@@ -78,7 +78,8 @@ at the top of this README indicates that the last build
 succeeded, then the circleci build instructions are valid.
 
 The remainder of this document is from the upstream
-repository and is likely outdated. Szerokiej drogi.
+repository and is likely outdated, especially as it pertains
+to build instructions. As my kinsfolk say, *szerokiej drogi*.
 
 Original Pymssql Readme
 =======================
