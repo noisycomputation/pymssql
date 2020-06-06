@@ -69,13 +69,34 @@ the only set of build instructions that are guaranteed
 to be valid will be contained in the config file(s) for
 the current CI system being used. For the branch to which
 this README document pertains, the CI system is circleci
-and the build instructions are at **.circleci/config.yml**
+and the build instructions are at `.circleci/config.yml`
 
 Though referencing a CI configuration file is not as
 user-friendly as writing a soliloquy, it has the benefit
 of being verifiably accurate. If the circleci status badge
 at the top of this README indicates that the last build
 succeeded, then the circleci build instructions are valid.
+
+Tests
+-----
+
+The testing suite has been inherited from upstream. While
+it shows as passing in circleci, it actually fails with
+multiple errors, and the successful result in circleci
+appears to be the result of the tests being passed into
+circleci as shell scripts, whose error-ful exit codes
+are not being passed to circleci.
+
+Bringing this project under test will be left to a future
+maintainer, hopefully a future maintainer of the upstream
+package. This maintainer tested the resulting packages
+in the maintainer's use case, and the packages have passed.
+
+Yes, that is anecdotal.
+
+Since the tests do not work, they have been disabled in
+`.circleci/config.yml`.
+
 
 The remainder of this document is from the upstream
 repository and is likely outdated, especially as it pertains

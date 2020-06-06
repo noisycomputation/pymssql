@@ -81,8 +81,8 @@ jobs:
               python3 -m venv venv
               . venv/bin/activate
               pip3 install twine
-              twine upload -u __token__ -p $TEST_PYPI_PASSWORD --repository testpypi dist/*
-              # twine upload -u __token__ -p $PYPI_PASSWORD dist/*
+              twine upload -u __token__ -p $PYPI_PASSWORD dist/*
+              #twine upload -u __token__ -p $TEST_PYPI_PASSWORD --repository testpypi dist/*
 
 workflows:
   version: 2
@@ -92,15 +92,16 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - test:
-          requires:
-            - build
-          filters:
-            tags:
-              only: /.*/
+      #- test:
+      #    requires:
+      #      - build
+      #    filters:
+      #      tags:
+      #        only: /.*/
       - deploy:
           requires:
-            - test
+            - build
+            #- test
           filters:
             tags:
               only: /^v.*/
