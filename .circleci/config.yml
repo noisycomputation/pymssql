@@ -97,10 +97,12 @@ workflows:
             - build
           filters:
             tags:
-              only: /^v.*/
+              only: /.*/
       - deploy:
           requires:
             - test
           filters:
             tags:
               only: /^v.*/
+            branches:
+              ignore: /.*/

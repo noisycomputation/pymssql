@@ -1,5 +1,8 @@
 .. default-role:: code
 
+.. image:: https://circleci.com/gh/noisycomputation/pymssql-linux.svg?style=svg
+        :target: https://circleci.com/gh/noisycomputation/pymssql-linux
+
 The Original Pymssql Project Has Been Discontinued
 ==================================================
 
