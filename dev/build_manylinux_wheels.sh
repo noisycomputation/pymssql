@@ -56,7 +56,7 @@ rm -rf /io/wheelhouse
 mkdir /io/wheelhouse
 
 # Install Python dependencies and compile wheels for Python 3.7 and 3.8 only
-for PYBIN in /opt/python/cp3{7,8}*/bin; do
+for PYBIN in /opt/python/*/bin; do
     "${PYBIN}/pip" install --upgrade pip setuptools
     "${PYBIN}/pip" install pytest SQLAlchemy Sphinx sphinx-rtd-theme Cython wheel
     "${PYBIN}/pip" wheel /io/ -w /io/wheelhouse/

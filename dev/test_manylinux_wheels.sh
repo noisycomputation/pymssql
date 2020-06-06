@@ -16,7 +16,7 @@ for PYBIN in /opt/python/cp3{7,8}*/bin; do
 done
 
 # Install the wheels that were built. Need to be able to connect to mssql and to run the pytest suite after install
-for PYBIN in /opt/python/cp3{7,8}*/bin/; do
+for PYBIN in /opt/python/*/bin/; do
     "${PYBIN}/pip" install pymssql --no-index -f /io/dist
     "${PYBIN}/python" -c "import pymssql; pymssql.__version__;"
     export TEST_PY="$(${PYBIN}/python -c 'import platform; major, minor, patch = platform.python_version_tuple(); print(major+minor+patch)')"

@@ -1,30 +1,54 @@
 .. default-role:: code
 
-.. image:: https://circleci.com/gh/noisycomputation/pymssql-linux.svg?style=svg
+.. image:: https://circleci.com/gh/noisycomputation/pymssql-linux/tree/minimal.svg?style=shield
         :target: https://circleci.com/gh/noisycomputation/pymssql-linux
 
 The Original Pymssql Project Has Been Discontinued
 ==================================================
 
-This repository has been forked from pymssql and
-modified to work with both Python 3.7 and 3.8.
+This repository has been forked from upstream pymssql
+and modified to work with both Python 3.7 and 3.8,
+whilst continuing to at least build successfully for
+2.7 for a short while, for sentimental but quite
+fundamental reasons.
 
-One of the reasons the upstream repository became
-such a tangle of inconsistent and outdated information
-is that it contained a large amount of build-related
-cruft that accumulated over the years.
+Why continue to support Python 2 until its dying day?
+Folks, upstream pymssql was taken out back and shot because
+Microsoft released native drivers into the open source. Using
+MS drivers on SQL Server 2005 requires version 11.0 or earlier
+of the MS driver, which is nearly impossible to compile on a
+modern *nix system due to an entire butterfly network of
+dependencies on long-deprecated system libraries. If you've ever
+tried to compile something non-trivial on Linux during the
+mid-90s, you'll know the pain of which I speak.
 
-To avoid this fate, the only set of build instructions
-that will be maintained in this repository will be
-contained in the .circleci/config.yml file. If the
-circleci build for the commit you are interested in
-succedded (you can verify this by checking the circleci
-status badge at the top of this document on Github),
-then you will know that the build instructions are
-valid.
+One of the reasons the upstream repository became such a tangle
+of inconsistent and outdated information is that it contained
+a large amount of build-related cruft that accumulated over
+the years.
+
+To avoid this fate, this repository will maintain only those
+CI configs that are being used to build, test, and deploy
+this package to PyPi. Currently, that universe consists of
+one CI, circleci, chosen because it was the repository of
+the most valid build instructions at the time this repo
+was forked from upstream. This may change in the future.
+
+Though this README may provide some additional context,
+the only set of build instructions that are guaranteed
+to be valid will be contained in the config file(s) for
+the current CI system being used. For the branch to which
+this README document pertains, the CI system is circleci
+and the build instructions are at .circleci/config.yml
+
+Though referencing a CI configuration file is not as
+user-friendly as writing a soliloquy, it has the benefit
+of being verifiably accurate. If the circleci status badge
+at the top of this README indicates that the last build
+succeeded, then the circleci build instructions are valid.
 
 The remainder of this document is from the upstream
-repository and is outdated.
+repository and is likely outdated.
 
 Original Pymssql Readme
 =======================
