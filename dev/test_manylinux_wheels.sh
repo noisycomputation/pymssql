@@ -2,7 +2,7 @@
 # Need to test the wheels that where build with build_manylinux_wheels.sh
 
 # Rename test template file for CI
-mv /io/tests/tests.cfg.tpl /io/tests/tests.cfg
+cp /io/tests/tests.cfg.tpl /io/tests/tests.cfg
 
 # Setup xml results folder for CI if it does not exist
 if [ ! -d /io/results ]; then
@@ -22,6 +22,8 @@ for PYBIN in /opt/python/*/bin/; do
     export TEST_PY="$(${PYBIN}/python -c 'import platform; major, minor, patch = platform.python_version_tuple(); print(major+minor+patch)')"
     "${PYBIN}pytest" /io --junitxml=/io/results/${TEST_PY}_test_results.xml
 done
+
+rm /io/tests/tests.cfg
 
 
 ## Run SQL Alchemy Tests

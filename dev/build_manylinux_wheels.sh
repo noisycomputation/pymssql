@@ -31,19 +31,17 @@
 # https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
 set -e -x
 
-# Remove freetds package distributed with the repo if present.
-rm -rf /io/freetds0.95
-
 # Install freetds and use in build. Yum channel shows version 0.91. Retrieving latest stable release for builds.
 export PYMSSQL_BUILD_WITH_BUNDLED_FREETDS=1
 
 rm -rf /io/freetds
 mkdir /io/freetds
-curl -sS ftp://ftp.freetds.org/pub/freetds/stable/freetds-patched.tar.gz > freetds.tar.gz
+curl -sS ftp://ftp.freetds.org/pub/freetds/stable/freetds-1.1.tar.gz > freetds.tar.gz
 tar -zxvf freetds.tar.gz -C /io/freetds --strip-components=1
 
 export CFLAGS="-fPIC"  # for the 64 bits version
 
+# omit --with-openssl=no if freetds version <1.1
 pushd /io/freetds
 ./configure --enable-msdblib \
   --prefix=/usr --sysconfdir=/etc/freetds --with-tdsver=7.1 \
@@ -53,11 +51,11 @@ pushd /io/freetds
 make install
 popd
 
-
-#Make wheelhouse directory if it doesn't exist yet
+# Make wheelhouse directory
+rm -rf /io/wheelhouse
 mkdir /io/wheelhouse
 
-# Install Python dependencies and compile wheels
+# Install Python dependencies and compile wheels for Python 3.7 and 3.8 only
 for PYBIN in /opt/python/*/bin; do
     "${PYBIN}/pip" install --upgrade pip setuptools
     "${PYBIN}/pip" install pytest SQLAlchemy Sphinx sphinx-rtd-theme Cython wheel
@@ -69,14 +67,14 @@ for whl in /io/wheelhouse/*.whl; do
    auditwheel repair "$whl" -w /io/wheelhouse/
 done
 
-# Remove non manylinux wheels
+# Remove non-manylinux wheels
 find /io/wheelhouse/ -type f ! -name '*manylinux*' -delete
 
 # Create .tar.gz dist if it doesn't exists.
 if [ ! -f /io/dist/*tar.gz* ]; then
-    mkdir /io/dist
+    [ ! -e /io/dist ] && mkdir /io/dist
     pushd /io/
-    /opt/python/cp36-cp36m/bin/python setup.py sdist
+    /opt/python/cp37-cp37m/bin/python setup.py sdist
     popd
 fi
 

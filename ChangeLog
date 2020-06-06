@@ -1,6 +1,22 @@
 Change Log
 ==========
 
+Version 2.1.6 - 2020-06-05 (pymssql-linux)
+=================================================
+
+- Fix circleci build script
+
+- Update docker-compose.yml to manylinux2010 images
+
+- Prepare package for upload to PyPi as pymssql-linux
+
+Version 2.1.5 - 2019-11-27 (pymssql-linux)
+=================================================
+
+- Add Python 3.8 support.
+
+- Drop support for Python < 3.6
+
 Version 2.1.4 - To be released
 ==============================
 
