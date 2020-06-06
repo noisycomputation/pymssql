@@ -11,7 +11,7 @@ fi
 
 
 # Install Python dependencies and compile wheels
-for PYBIN in /opt/python/cp3{7,8}*/bin; do
+for PYBIN in /opt/python/*/bin; do
     "${PYBIN}/pip" install pytest SQLAlchemy Sphinx sphinx-rtd-theme Cython wheel
 done
 

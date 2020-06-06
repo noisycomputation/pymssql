@@ -8,29 +8,59 @@ The Original Pymssql Project Has Been Discontinued
 
 This repository has been forked from upstream pymssql
 and modified to work with both Python 3.7 and 3.8,
-whilst continuing to at least build successfully for
+whilst continuing to (at least) build successfully for
 2.7 for a short while, for sentimental but quite
 fundamental reasons.
 
-Why continue to support Python 2 until its dying day?
+There is no interest whatsoever in making this work
+in Windows.
+
+Why Support Python 2 until its dying day?
+-----------------------------------------
+
 Folks, upstream pymssql was taken out back and shot because
 Microsoft released native drivers into the open source. Using
 MS drivers on SQL Server 2005 requires version 11.0 or earlier
 of the MS driver, which is nearly impossible to compile on a
-modern *nix system due to an entire butterfly network of
+modern \*nix system due to an entire butterfly network of
 dependencies on long-deprecated system libraries. If you've ever
 tried to compile something non-trivial on Linux during the
 mid-90s, you'll know the pain of which I speak.
 
+Why Not Support Windows?
+------------------------
+
+See above. If Microsoft never honored us by gifting us a bunch
+of deprecated code that hadn't been maintained for a decade,
+the upstream pymssql would have been the only game in town and
+would have happily chugged along. But Microsoft did honor us,
+which led to the behind-the-courthouse death of pymssql, which
+led to the earthly hell of trying to compile Microsoft-gathered
+\*nix code that relied on libraries from the early 2000s, et
+cetera, ad infinitum.
+
+I have zero interest in figuring out how to build pymssql in
+a Windows CI. If someone wants to work with me to port
+pymssql to the Commodore 64, the Amiga 500, or Windows 2.1,
+let us waste no time. But forget Windows >= 3.1.
+
+It must be childishly easy to get the official drivers working
+on a Windows box anyways.
+
+Build Instructions
+------------------
+
 One of the reasons the upstream repository became such a tangle
 of inconsistent and outdated information is that it contained
 a large amount of build-related cruft that accumulated over
-the years.
+the years. And that cruft was in addition to a README that
+contained build instructions that *maybe* worked two versions
+ago.
 
 To avoid this fate, this repository will maintain only those
 CI configs that are being used to build, test, and deploy
 this package to PyPi. Currently, that universe consists of
-one CI, circleci, chosen because it was the repository of
+one CI, *circleci*, chosen only because it was the repository of
 the most valid build instructions at the time this repo
 was forked from upstream. This may change in the future.
 
@@ -39,7 +69,7 @@ the only set of build instructions that are guaranteed
 to be valid will be contained in the config file(s) for
 the current CI system being used. For the branch to which
 this README document pertains, the CI system is circleci
-and the build instructions are at .circleci/config.yml
+and *the build instructions are at* **.circleci/config.yml**
 
 Though referencing a CI configuration file is not as
 user-friendly as writing a soliloquy, it has the benefit
@@ -48,7 +78,7 @@ at the top of this README indicates that the last build
 succeeded, then the circleci build instructions are valid.
 
 The remainder of this document is from the upstream
-repository and is likely outdated.
+repository and is likely outdated. Szerokiej drogi.
 
 Original Pymssql Readme
 =======================
